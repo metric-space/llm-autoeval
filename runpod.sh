@@ -82,7 +82,7 @@ if [ "$BENCHMARK" == "nous" ]; then
     
     python ../llm-autoeval/main.py . $(($end-$start))
 
-if [ "$BENCHMARK" == "nous-peft" ]; then
+if [ "$BENCHMARK" == "peft-nous" ]; then
     git clone -b add-agieval https://github.com/dmahan93/lm-evaluation-harness
     cd lm-evaluation-harness
     pip install -e .
