@@ -55,6 +55,17 @@ def calculate_average(data, task):
         elif task == "truthfulqa":
             value = data["results"]["truthfulqa_mc"]["mc2"]
             return 0.0 if math.isnan(value) else value * 100
+
+    elif BENCHMARK == "peft-nous":
+        if task == "agieval":
+            return get_acc_norm(data)
+        elif task == "gpt4all":
+            return get_acc_norm(data)
+        elif task == "bigbench":
+            return get_mcg(data)
+        elif task == "truthfulqa":
+            value = data["results"]["truthfulqa_mc"]["mc2"]
+            return 0.0 if math.isnan(value) else value * 100
     return 0
     #raise NotImplementedError(f"Could not find task {task} for benchmark {BENCHMARK}")
 
