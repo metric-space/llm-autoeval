@@ -136,48 +136,48 @@ elif [ "$BENCHMARK" == "openllm" ]; then
     #pip install langdetect immutabledict vllm
 
     python main.py \
-        --model=hf-causal-experimental \ 
-        --model_args="pretrained=${MODEL_ID},use_accelerate=True" \     
+        --model hf-causal-experimental \ 
+        --model_args pretrained=${MODEL_ID},use_accelerate=True \     
         --tasks arc_challenge \
         --num_fewshot 25 \
         --batch_size=2 \    
         --output_path ./${benchmark}.json
 
     python main.py \
-        --model=hf-causal-experimental \ 
-        --model_args="pretrained=${MODEL_ID},use_accelerate=True" \     
+        --model hf-causal-experimental \ 
+        --model_args pretrained=${MODEL_ID},use_accelerate=True \     
         --tasks hellaswag \
         --num_fewshot 10 \
         --batch_size=2 \    
         --output_path ./${benchmark}.json
 
     python main.py \
-        --model=hf-causal-experimental \ 
-        --model_args="pretrained=${MODEL_ID},use_accelerate=True" \             
+        --model hf-causal-experimental \ 
+        --model_args pretrained=${MODEL_ID},use_accelerate=True \             
         --tasks mmlu \
         --num_fewshot 5 \
         --batch_size=2 \    
         --output_path ./${benchmark}.json
 
     python main.py 
-        --model=hf-causal-experimental \ 
-        --model_args="pretrained=${MODEL_ID},use_accelerate=True" \     
+        --model hf-causal-experimental \ 
+        --model_args pretrained=${MODEL_ID},use_accelerate=True \     
         --tasks truthfulqa \
         --num_fewshot 0 \
         --batch_size=2 \    
         --output_path ./${benchmark}.json
 
     python main.py \
-        --model=hf-causal-experimental \ 
-        --model_args="pretrained=${MODEL_ID},use_accelerate=True" \             
+        --model hf-causal-experimental \ 
+        --model_args pretrained=${MODEL_ID},use_accelerate=True \             
         --tasks winogrande \
         --num_fewshot 5 \
         --batch_size=2 \    
         --output_path ./${benchmark}.json
 
     python main.py \
-        --model=hf-causal-experimental \ 
-        --model_args="pretrained=${MODEL_ID},use_accelerate=True" \             
+        --model hf-causal-experimental \ 
+        --model_args pretrained=${MODEL_ID},use_accelerate=True \             
         --tasks gsm8k \
         --num_fewshot 5 \
         --batch_size=2 \    
