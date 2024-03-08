@@ -134,6 +134,7 @@ elif [ "$BENCHMARK" == "openllm" ]; then
     python -m pip install --upgrade pip
     pip install -e .
     pip install --upgrade vllm
+    pip install --upgrade promptsource
     pip install langdetect immutabledict
 
     benchmark="arc"
@@ -158,6 +159,7 @@ elif [ "$BENCHMARK" == "openllm" ]; then
         --tasks mmlu \
         --num_fewshot 5 \
         --batch_size auto \
+        --verbosity DEBUG \
         --output_path ./${benchmark}.json
     
     benchmark="truthfulqa"
