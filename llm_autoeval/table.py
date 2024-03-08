@@ -42,7 +42,7 @@ def calculate_average(data, task):
             return data["results"]["winogrande"]["acc,none"] * 100
         elif task == "gsm8k":
             return (
-                data["results"]["gsm8k"]["exact_match,get-answer"] * 100
+                data["results"]["gsm8k"]["exact_match,strict-match"] * 100
             )  # should be "acc" instead
 
     elif BENCHMARK == "nous":
