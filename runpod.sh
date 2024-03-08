@@ -133,9 +133,7 @@ elif [ "$BENCHMARK" == "openllm" ]; then
     cd lm-evaluation-harness
     python -m pip install --upgrade pip
     pip install -e .
-    pip install --upgrade vllm
-    pip install --upgrade promptsource
-    pip install langdetect immutabledict
+    pip install langdetect immutabledict vllm
 
     benchmark="arc"
     lm_eval --model vllm \
