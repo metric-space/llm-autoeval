@@ -133,54 +133,55 @@ elif [ "$BENCHMARK" == "openllm" ]; then
     cd lm-evaluation-harness
     python -m pip install --upgrade pip
     pip install -e .
-    #pip install langdetect immutabledict vllm
+    pip install langdetect immutabledict vllm
 
-    python main.py \
-        --model hf-causal-experimental \ 
-        --model_args pretrained=${MODEL_ID},use_accelerate=True \     
+    benchmark="arc"
+    lm_eval --model vllm \
+        --model_args pretrained=${MODEL_ID} \
         --tasks arc_challenge \
         --num_fewshot 25 \
-        --batch_size 2 \    
+        --batch_size  1 \
         --output_path ./${benchmark}.json
-
-    python main.py \
-        --model hf-causal-experimental \ 
-        --model_args pretrained=${MODEL_ID},use_accelerate=True \     
+    
+    benchmark="hellaswag"
+    lm_eval --model vllm \
+        --model_args pretrained=${MODEL_ID},trust_remote_code=$TRUST_REMOTE_CODE \
         --tasks hellaswag \
         --num_fewshot 10 \
-        --batch_size 2 \    
+        --batch_size 1 \
         --output_path ./${benchmark}.json
 
-    python main.py \
-        --model hf-causal-experimental \ 
-        --model_args pretrained=${MODEL_ID},use_accelerate=True \             
+    benchmark="mmlu"
+    lm_eval --model vllm \
+        --model_args pretrained=${MODEL_ID},trust_remote_code=$TRUST_REMOTE_CODE \
         --tasks mmlu \
         --num_fewshot 5 \
-        --batch_size 2 \    
+        --batch_size 1 \
+        --verbosity DEBUG \
         --output_path ./${benchmark}.json
 
-    python main.py 
-        --model hf-causal-experimental \ 
-        --model_args pretrained=${MODEL_ID},use_accelerate=True \     
+    benchmark="truthfulqa"
+    lm_eval --model vllm \
+        --model_args pretrained=${MODEL_ID},trust_remote_code=$TRUST_REMOTE_CODE \
         --tasks truthfulqa \
         --num_fewshot 0 \
-        --batch_size 2 \    
+        --batch_size 1 \
         --output_path ./${benchmark}.json
-
-    python main.py \
-        --model hf-causal-experimental \ 
-        --model_args pretrained=${MODEL_ID},use_accelerate=True \             
+    
+    benchmark="winogrande"
+    lm_eval --model vllm \
+        --model_args pretrained=${MODEL_ID},trust_remote_code=$TRUST_REMOTE_CODE \
         --tasks winogrande \
         --num_fewshot 5 \
-        --batch_size 2 \    
+        --batch_size 1 \
         --output_path ./${benchmark}.json
-
-    python main.py \
-        --model hf-causal-experimental \ 
-        --model_args pretrained=${MODEL_ID},use_accelerate=True \             
+    
+    benchmark="gsm8k"
+    lm_eval --model vllm \
+        --model_args pretrained=${MODEL_ID},trust_remote_code=$TRUST_REMOTE_CODE \
         --tasks gsm8k \
         --num_fewshot 5 \
-        --batch_size 2 \    
+        --batch_size 1 \
         --output_path ./${benchmark}.json
 
     end=$(date +%s)
